@@ -6,4 +6,6 @@
 
 namespace cryst {
 
+#include <cryst/logging/EngineLogger.h>
+
 }

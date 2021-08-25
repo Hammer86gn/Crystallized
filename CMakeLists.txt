@@ -12,5 +12,7 @@ include_directories(libs/glad/include)
 include_directories(libs/glfw/include)
 include_directories(include)
 
-add_library(Crystallized ${INCDIR}Crystallized.h ${INCDIR}application/Application.h ${INCDIR}EntryPoint.h ${SRCDIR}application/Application.cpp)
+add_library(Crystallized ${INCDIR}Crystallized.h ${INCDIR}application/Application.h ${INCDIR}EntryPoint.h
+        ${SRCDIR}application/Application.cpp ${INCDIR}logging/EngineLogger.h ${SRCDIR}logging/EngingeLogger.cpp)
+
 add_subdirectory(test)

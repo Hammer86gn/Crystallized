@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cryst/application/Application.h>
 #include <cryst/EntryPoint.h>
+#include <cryst/logging/EngineLogger.h>
 
 
 class Test : public cryst::Application {
@@ -18,10 +19,12 @@ public:
     }
 
     void onRun() override {
-        long long time = 1;
+        long long time = 100;
+
+        auto logger = new EngineLogger();
 
         while (time > 0) {
-           std::cout << "Hello, World!" << "\n";
+           logger->info("Hello, World!");
            time--;
         }
     }
