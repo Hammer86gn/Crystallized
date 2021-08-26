@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include <iostream>
 #include <fstream>
 #include <string>
+#include <iostream>
 
 enum LogLevel {
     INFO = 0,
@@ -18,8 +18,6 @@ enum LogLevel {
 class EngineLogger {
 
 public:
-    explicit EngineLogger(bool useFile);
-
     EngineLogger();
 
     void log(LogLevel level, std::string message);
