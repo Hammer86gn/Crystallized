@@ -18,7 +18,7 @@ enum LogLevel {
 class EngineLogger {
 
 public:
-    EngineLogger();
+    explicit EngineLogger(std::string prefix);
 
     void log(LogLevel level, std::string message);
 
@@ -32,6 +32,7 @@ public:
 
     void err(std::string message);
 private:
+    std::string m_prefix;
     std::ofstream m_loggingFile;
     std::string m_path;
 

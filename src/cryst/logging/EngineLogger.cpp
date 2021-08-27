@@ -31,8 +31,9 @@
 //
 //}
 
-EngineLogger::EngineLogger() {
+EngineLogger::EngineLogger(std::string prefix) {
     this->useFile = true;
+    this->m_prefix = prefix;
 
     std::time_t t = std::time(0);
 
@@ -56,7 +57,7 @@ EngineLogger::EngineLogger() {
 
     this->m_path = ss.str();
     this->m_loggingFile = std::ofstream(ss.str(), std::ios::app);
-    this->m_loggingFile << "==================================================" << "\n" << "Crystallized Log" << "\n" << "==================================================" << "\n";
+    //this->m_loggingFile << "==================================================" << "\n" << "Crystallized Log" << "\n" << "==================================================" << "\n";
     this->m_loggingFile.close();
 }
 
@@ -72,7 +73,7 @@ void EngineLogger::log(LogLevel level, std::string message) {
     int sec = ltm->tm_sec;
 
     std::stringstream messageStream;
-    messageStream << "[" + logLevelToString(level) + " @ ";
+    messageStream << "[" + m_prefix + ": " + logLevelToString(level) + " @ ";
     messageStream << hour << ":" << min << ":" << sec << "]: " << message << "\n";
 
     std::cout << messageStream.str();
@@ -89,7 +90,7 @@ void EngineLogger::logFileOnly(LogLevel level, std::string message) {
     int sec = ltm->tm_sec;
 
     std::stringstream messageStream;
-    messageStream << "[" + logLevelToString(level) + " @ ";
+    messageStream << "[" + m_prefix + ": " + logLevelToString(level) + " @ ";
     messageStream << hour << ":" << min << ":" << sec << "]: " << message;
 
     if (this->m_loggingFile.is_open()) {

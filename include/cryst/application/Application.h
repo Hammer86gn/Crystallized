@@ -4,16 +4,26 @@
 
 #pragma once
 
+#include <glad/gl.h>
+#include <GLFW/glfw3.h>
+#include <string>
+
 namespace cryst {
 
     class Application {
     public:
-        Application();
+         Application(std::string name);
 
         virtual ~Application();
 
         //NOTE: This is what runs the application you can think of this as the new int main();
         virtual void onRun();
+
+    private:
+        std::string m_name;
+
+    protected:
+        GLFWwindow* m_window;
     };
 
     //NOTE: must be implemented in order for the game to run
